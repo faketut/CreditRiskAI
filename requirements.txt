@@ -1,8 +1,6 @@
-Flask-API
 pydantic
 pandas
 sqlalchemy
-logging
 matplotlib
 seaborn
 scipy
