@@ -1,0 +1,138 @@
+2. Data Ingestion
+Ingest Raw Data:
+
+Create a FastAPI endpoint (/ingest) to accept CSV or JSON files containing customer data.
+
+Validate the incoming data against the metadata schema (e.g., ID, Customer_ID, Age, Annual_Income, etc.).
+
+Store the raw data in the PostgreSQL raw_data table.
+
+Log Data Ingestion:
+
+Log each ingestion event (e.g., file name, timestamp, number of records) in the ingestion_logs table.
+
+3. Exploratory Data Analysis (EDA)
+Load Data for EDA:
+
+Create a FastAPI endpoint (/eda) to fetch data from the raw_data table.
+
+Use Python libraries (Pandas, Matplotlib, Seaborn) to perform EDA.
+
+Generate EDA Reports:
+
+Calculate key statistics (e.g., missing values, distributions, correlations).
+
+Save EDA visualizations (e.g., histograms, box plots) to GCP Storage.
+
+Store EDA summary statistics in the eda_results table.
+
+4. Data Preprocessing
+Clean and Transform Data:
+
+Create a FastAPI endpoint (/preprocess) to fetch raw data and apply preprocessing steps:
+
+Handle missing values (e.g., impute Annual_Income with median).
+
+Remove duplicates and outliers.
+
+Encode categorical variables (e.g., Credit_Mix, Payment_Behaviour).
+
+Store the cleaned data in the processed_data table.
+
+Log Preprocessing Steps:
+
+Log each preprocessing step (e.g., imputation method, encoding strategy) in the preprocessing_logs table.
+
+5. Feature Selection
+Select Relevant Features:
+
+Create a FastAPI endpoint (/select_features) to perform feature selection:
+
+Use statistical methods (e.g., correlation analysis, chi-square test).
+
+Select features with the highest impact on Credit_Score.
+
+Store the selected features in the selected_features table.
+
+Log Feature Selection:
+
+Log the selected features and their importance scores in the feature_selection_logs table.
+
+6. Model Development
+Train the Model:
+
+Create a FastAPI endpoint (/train) to train the credit risk model:
+
+Split the data into training and testing sets.
+
+Apply WOE (Weight of Evidence) transformation to categorical variables.
+
+Train a logistic regression model using Credit_Score as the target variable.
+
+Save the trained model to GCP Storage.
+
+Log Model Training:
+
+Log model training details (e.g., hyperparameters, training accuracy) in the model_training_logs table.
+
+7. Model Validation and Calibration
+Validate the Model:
+
+Create a FastAPI endpoint (/validate) to validate the model:
+
+Calculate metrics (e.g., ROC-AUC, precision, recall).
+
+Perform calibration (e.g., adjust probability thresholds).
+
+Log Validation Results:
+
+Log validation metrics and calibration details in the model_validation_logs table.
+
+8. Model Deployment
+Deploy the Model:
+
+Create a FastAPI endpoint (/predict) to serve predictions:
+
+Load the trained model.
+
+Accept customer data as input and return the predicted Credit_Score.
+
+Store predictions in the predictions table.
+
+Log Predictions:
+
+Log each prediction request (e.g., input data, predicted score) in the prediction_logs table.
+
+9. Monitoring and Reporting
+Monitor Model Performance:
+
+Create a FastAPI endpoint (/monitor) to track model performance over time:
+
+Calculate metrics (e.g., accuracy, stability) on new data.
+
+Generate alerts if performance drops below a threshold.
+
+Store monitoring results in the monitoring_logs table.
+
+Generate Reports:
+
+Create a FastAPI endpoint (/report) to generate periodic reports:
+
+Summarize model performance, usage statistics, and key insights.
+
+Save reports and send them to stakeholders via email.
+
+10. Continuous Improvement (pending)
+Retrain the Model:
+
+Create a FastAPI endpoint (/retrain) to retrain the model periodically:
+
+Fetch new data from the raw_data table.
+
+Repeat the preprocessing, feature selection, and training steps.
+
+Log retraining details in the retraining_logs table.
+
+Update Documentation:
+
+Update the model_documentation.md file with new insights, changes, and best practices.

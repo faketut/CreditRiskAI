@@ -15,6 +15,7 @@
 				"ms-python.vscode-pylance",
 				"mtxr.sqltools",
 				"mtxr.sqltools-driver-pg"
+				"dbaeumer.vscode-eslint" // Add ESLint extension for React frontend
 			],
 			"settings": {
 				"sqltools.connections": [
@@ -48,15 +49,24 @@
 				"python.linting.pydocstylePath": "/usr/local/py-utils/bin/pydocstyle",
 				"python.linting.pylintPath": "/usr/local/py-utils/bin/pylint",
 				"python.testing.pytestPath": "/usr/local/py-utils/bin/pytest"
+				"eslint.enable": true, // Enable ESLint for React frontend
+				"eslint.nodePath": "/usr/local/bin/node", // Set the path to Node.js
+				"eslint.packageManager": "npm", // Set the package manager to Yarn
+				"eslint.validate": [
+					"javascript",
+					"javascriptreact",
+					"typescript",
+					"typescriptreact"
+				]
 			}
 		}
 	},
 	// Use 'forwardPorts' to make a list of ports inside the container available locally. 5000 is for Flask, 8000 is for Django, and 5432 is for PostgreSQL.
 	"forwardPorts": [
-		8000, 5000, 5432
+		8000, 5000, 5432, 3000 // Add 3000 for React frontend
 	],
 	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "",
+	"postCreateCommand": "cd frontend && npm install",
 	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
 	"remoteUser": "vscode"
 }

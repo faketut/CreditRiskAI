@@ -1,3 +1,15 @@
+Flask-API
+pydantic
+pandas
+sqlalchemy
+logging
+matplotlib
+seaborn
+scipy
+numpy
+scikit-learn
+joblib
+category-encoders
 Flask
 Flask-Migrate
 Flask-SQLAlchemy

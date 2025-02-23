@@ -7,7 +7,7 @@ metadata:
 services:
   web:
     project: .
-    language: py
+    language: flaskapi
     host: appservice
 hooks:
   postprovision:
